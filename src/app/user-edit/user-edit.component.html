@@ -1,0 +1,38 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Atualizar usuário</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="hidden">
+      <input type="hidden" formControlName="Id" placeholder="Id" name="Id" class="form-control" id="Id">
+    </div>
+    <div class="form-group">
+      <label for="Nome">Nome</label>
+      <input type="text" formControlName="Nome" placeholder="Nome" name="Nome" class="form-control" id="Nome">
+    </div>
+
+    <div class="form-group">
+      <label for="sobrenome">Sobrenome</label>
+      <input formControlName="Sobrenome" placeholder="Sobrenome" name="Sobrenome" class="form-control" id="Sobrenome">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input formControlName="Email" placeholder="Email" name="email" class="form-control" id="Email">
+    </div>
+
+    <div class="form-group">
+      <label for="DataNascimento">Data de Nascimento:</label>
+      <input type="date" formControlName="DataNascimento" value="DataNascimento" name="DataNascimento" class="form-control"         id="DataNascimento">
+      
+
+    </div>
+
+    <div class="form-group">
+      <label for="escolaridade">Escolaridade:</label>
+      <input type="number" formControlName="Escolaridade" name="Escolaridade" class="form-control" id="Escolaridade">
+    </div>
+
+    <button class="btn btn-success">Atualizar</button>
+  </form>
+  <br>
+  <button class="btn btn-warning" routerLink="..">Voltar</button>
+</div>
