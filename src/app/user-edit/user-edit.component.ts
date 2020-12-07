@@ -15,7 +15,7 @@ import * as moment from 'moment';
 export class UserEditComponent implements OnInit {
 
 
-
+  public escolaridades: any;
   user: User = new User();
   editForm!: FormGroup;
 
@@ -27,7 +27,7 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.escolaridades = [{ id: 1, desc: 'Infantil' }, { id: 2, desc: 'Fundamental' }, { id: 3, desc: 'Médio' }, { id: 4, desc: 'Superior' }];
     let userId = window.localStorage.getItem("editUserId");
     console.log('userId', userId)
     if (!userId) {
@@ -43,29 +43,39 @@ export class UserEditComponent implements OnInit {
       Sobrenome: ['', Validators.required],
       Email: ['', Validators.required],
       DataNascimento: [''],
-
       Escolaridade: ['', Validators.required]
     });
-
-
-
 
 
     this.apiService.obterUsuarioPeloId(+userId)
       .subscribe((data: User) => {
         this.editForm.setValue(data);
-        this.editForm.patchValue({ 'DataNascimento': moment(this.editForm.controls['DataNascimento'].value).format("yyyy/MM/DD") })
+        this.editForm.patchValue({ 'DataNascimento': moment(this.editForm.controls['DataNascimento'].value).format("yyyy/MM/DD").toString() })
+
+        switch (data.Escolaridade) {
+          case (1):
+            this.editForm.patchValue({ 'Escolaridade': 'Infantil' });
+            break;
+          case (2):
+            this.editForm.patchValue({ 'Escolaridade': 'Fundamental' });
+            break;
+          case (3):
+            this.editForm.patchValue({ 'Escolaridade': 'Médio' });
+            break;
+          case (4):
+            this.editForm.patchValue({ 'Escolaridade': 'Superior' });
+            break;
+
+        }
         console.log('data', data);
       }, error => {
         console.log('error', error);
       });
 
-    
-
-
   }
 
   onSubmit() {
+    this.editForm.value.Escolaridade= 3;
     this.apiService.atualizarUsuario(this.editForm.value)
       .subscribe(
 

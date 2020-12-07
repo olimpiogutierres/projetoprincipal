@@ -21,14 +21,17 @@
 
     <div class="form-group">
       <label for="DataNascimento">Data de Nascimento:</label>
-      <input type="date" formControlName="DataNascimento" value="DataNascimento" name="DataNascimento" class="form-control"         id="DataNascimento">
-      
+      <input type="date" formControlName="DataNascimento" value="DataNascimento" name="DataNascimento"
+        class="form-control" id="DataNascimento">
+
 
     </div>
 
     <div class="form-group">
       <label for="escolaridade">Escolaridade:</label>
-      <input type="number" formControlName="Escolaridade" name="Escolaridade" class="form-control" id="Escolaridade">
+      <select formControlName="escolaridade" class="form-control">
+        <option *ngFor="let escol of escolaridades" [value]="escol.id">{{escol.desc}}</option>
+      </select>
     </div>
 
     <button class="btn btn-success">Atualizar</button>

@@ -1,42 +1,40 @@
 <div class="col-md-6 user-container">
-    <h2 class="text-center">Add User</h2>
-    <form [formGroup]="addForm"  (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input type="text" formControlName="nome" placeholder="nome" name="nome" class="form-control" id="nome">
-      </div>
-  
-      <div class="form-group">
-        <label for="sobrenome">Sobrenome:</label>
-        <input formControlName="sobrenome" placeholder="sobrenome" name="sobrenome" class="form-control" id="sobrenome">
-      </div>
-  
-    
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input formControlName="email" placeholder="email" name="email" class="form-control" id="email">
-        <!-- <div class="validacao" *ngIf="addForm.get('email').hasError('email') && submitted">
+  <h2 class="text-center">Adicionar usuário</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" formControlName="nome" placeholder="nome" name="nome" class="form-control" id="nome">
+    </div>
+
+    <div class="form-group">
+      <label for="sobrenome">Sobrenome:</label>
+      <input formControlName="sobrenome" placeholder="sobrenome" name="sobrenome" class="form-control" id="sobrenome">
+    </div>
+
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input formControlName="email" placeholder="email" name="email" class="form-control" id="email">
+      <!-- <div class="validacao" *ngIf="addForm.get('email').hasError('email') && submitted">
             Email é inválido.
           </div> -->
-      </div>
+    </div>
 
-      <!-- <mat-form-field class="example-full-width">
-        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field> -->
-  
-      <div class="form-group">
-        <label for="datanascimento">Data de Nascimento:</label>
-        <input type="date"  formControlName="datanascimento"  name="datanascimento" class="form-control" id="datanascimento">
-      </div>
-  
-      <div class="form-group">
-        <label for="escolaridade">Escolaridade:</label>
-        <input type="number" formControlName="escolaridade" name="escolaridade" class="form-control" id="escolaridade">
-      </div>
-  
-      <button class="btn btn-success">Add</button>
-    </form>
-  </div>
-  
+    <div class="form-group">
+      <label for="datanascimento">Data de Nascimento:</label>
+      <input type="date" formControlName="datanascimento" name="datanascimento" class="form-control"
+        id="datanascimento">
+    </div>
+
+    <div class="form-group">
+      <label for="escolaridade">Escolaridade:</label>
+      <select formControlName="escolaridade" class="form-control">
+        <option *ngFor="let escol of escolaridades" [value]="escol.id">{{escol.desc}}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success">Adicionar</button>
+  </form>
+  <br>
+  <button class="btn btn-warning" routerLink="..">Voltar</button>
+</div>

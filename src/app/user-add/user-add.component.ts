@@ -14,6 +14,9 @@ export class UserAddComponent implements OnInit {
 
   addForm!: FormGroup;
   submitted: any;
+  escolaridades: any;
+
+
   constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) {
   }
 
@@ -21,6 +24,7 @@ export class UserAddComponent implements OnInit {
   maxDate = new Date(new Date().setDate(new Date().getDate() - 1))
 
   ngOnInit(): void {
+    this.escolaridades = [{ id: 1, desc: 'Infantil' }, { id: 2, desc: 'Fundamental' }, { id: 3, desc: 'Médio' }, { id: 4, desc: 'Superior' }];
     this.submitted = false;
     this.addForm = this.formBuilder.group({
       id: [],

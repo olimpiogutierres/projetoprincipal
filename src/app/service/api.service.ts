@@ -51,7 +51,7 @@ export class ApiService extends BaseService {
     this.optionsHttp.body = { stringified };
     
 
-    return this.http.post<any>(this.baseUrl, stringified, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+    return this.http.post<any>(this.baseUrl, stringified.replace('"escolaridade":"','"escolaridade":').replace('"}','}'), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
 
   }
 
